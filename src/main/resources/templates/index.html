@@ -2,49 +2,133 @@
 <html lang="en" xmlns:mvc="http://www.springframework.org/schema/mvc"
       xmlns:context="http://www.springframework.org/schema/context">
 	<head>
-	    <mvc:annotation-driven enable-matrix-variables="true"/>
-	    <context:component-scan base-package="com.example.demo"/>
-	    <mvc:default-servlet-handler/>
-	    <meta charset="utf-8" />
-	    <title></title>
-	    <script type="text/javascript" src="jquery-3.3.1.js"></script>
+		<mvc:annotation-driven enable-matrix-variables="true"/>
+		    <context:component-scan base-package="com.example.demo"/>
+		    <mvc:default-servlet-handler/>
+		<meta charset="utf-8">
+		<title>登录</title>
+        <!--使用jquery框架-->
+        <style>
+            body{text-align: center;}
+			p{font-family: 隶书;}
+			#one
+			{
+				width: 400px;
+				height: 500px;
+				border: 3px solid black ;
+				border-radius:15px;
+				background-color: white;
+				margin:100px auto
+			}
+			#two
+			{
+				height: 100px;
+			}
+			#three
+			{
+				height: 100px;
+			}
+			#three input
+			{
+				height: 45px;
+				width: 200px;
+				background-color: white;
+				border: 3px solid black;
+				border-radius: 8px;
+			}
+			#four
+			{
+				height: 100px;
+			}
+			#four input
+			{
+				height: 45px;
+				width: 200px;
+				background-color: white;
+				border: 3px solid black;
+				border-radius: 8px;
+			}
+			#five
+			{
+				height: 100px;
+			}
+			#five input
+			{
+				height: 30px;
+				width: 30px;
+			}
+			#six
+			{
+				height: 100px;
+			}
+			#six button
+			{
+				height: 45px;
+				width: 100px;
+				background-color: white;
+				border: 3px solid black;
+				border-radius: 8px;
+				font-size: 20px;
+			}
+        </style>
+        <script type="text/javascript" src="jquery-3.3.1.js"></script>
 	    <script type="text/javascript">
-	    function f() {
-	        $.ajax({
-	            url:"/users/a",
-	            data:{
-	               "userName":$("#username").val()
-	            },
-	            success:function (data) {
-	                console.log(data);
-	                if(data.toString() == "success")
-	                {
-	                    $("#usernamecontext").html("用户名合法")
-	                }else {
-	                    $("#usernamecontext").html("用户名不合法")
-	                }
-	 
-	            }
-	 
-	        })
-	 
-	    }
+		    function f() 
+		    {
+		        $.ajax({
+		            url:"/users/a",
+		            data:
+		            {
+		               "userName":$("#username").val()
+		            },
+		            success:function (data) 
+		            {
+		                console.log(data);
+		                if(data.toString() == "success")
+		                {
+		                    $("#usernamecontext").html("用户名合法")
+		                }else {
+		                    $("#usernamecontext").html("用户名不合法")
+		                }
+		 
+		            }
+		 
+		        })
+		 
+		    }
 	    </script>
-	 
 	</head>
+	 
 	<body>
-		<p>
-		   用户名：
-		    <input  id="username" type="text" onblur="f()">
-		    <span id="usernamecontext"></span>
-		</p>
-		<p>
-		   密码：
-		    <input  id="password" type="text">
-		    <span id="passwordcontext"></span>
-		</p>
-		<a href="Signup">注册</a>
-		<a href="UserSystem">登录用户系统</a>
-		<a href="ManagerSystem">登录管理员系统</a>
-	</body>
+        <div id="one">
+            <div id="two"><h1>登录</h1></div>
+            <div id="three"><input type="text" id="username" placeholder="Please input userid" onblur="f()"><br></div>
+            <div id="four"><input type="password" id="password" placeholder="Please input password"><br></div>    
+            <div id="five">
+                <input type="radio" name="身份" id="用户" checked="checked">用户&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="身份" id="管理员" >管理员<br>
+			</div>
+			<div id="six">
+				<a href="UserSystem"><button id="登录" onclick="f()" >登录</button></a>&nbsp;&nbsp;&nbsp;&nbsp;
+				<a href="Signup"><button id="注册" onclick="">注册</button></a><br>
+				<a href="ManagerSystem">登录管理员系统</a>
+			</div>
+        </div>
+
+        <!-- <p>
+            用户名：
+             <input  id="username" type="text" onblur="f()">
+             <span id="usernamecontext"></span>
+         </p>
+         <p>
+            密码：
+             <input  id="password" type="text">
+             <span id="passwordcontext"></span>
+         </p>
+         <a href="Signup">注册</a>
+         <a href="UserSystem">登录用户系统</a>
+         <a href="ManagerSystem">登录管理员系统</a>
+   -->
+    </body>
+ 
 </html>

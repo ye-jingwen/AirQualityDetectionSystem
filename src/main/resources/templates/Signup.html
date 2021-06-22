@@ -6,17 +6,95 @@
 		    <context:component-scan base-package="com.example.demo"/>
 		    <mvc:default-servlet-handler/>
 		<meta charset="utf-8">
-		<title>文档标题</title>
+		<title>注册</title>
 		<!--使用jquery框架-->
+		<style>
+            body{text-align: center;}
+			p{font-family: 隶书;}
+			#one
+			{
+				width: 400px;
+				height: 500px;
+				border: 3px solid black ;
+				border-radius:10px;
+				background-color: white;
+				margin:100px auto
+			}
+			#two
+			{
+				height: 75px;
+			}
+			#three
+			{
+				height: 75px;
+			}
+			#three input
+			{
+				height: 45px;
+				width: 200px;
+				background-color: white;
+				border: 3px solid black;
+				border-radius: 8px;
+			}
+			#four
+			{
+				height: 75px;
+			}
+			#four input
+			{
+				height: 45px;
+				width: 200px;
+				background-color: white;
+				border: 3px solid black;
+				border-radius: 8px;
+			}
+			#five
+			{
+				height: 100px;
+			}
+			#five input
+			{
+				height: 30px;
+				width: 30px;
+			}
+			#six
+			{
+				height: 100px;
+			}
+			#six button
+			{
+				height: 45px;
+				width: 100px;
+				background-color: white;
+				border: 3px solid black;
+				border-radius: 8px;
+				font-size: 20px;
+			}
+        </style>
 		<script type="text/javascript" src="jquery-3.3.1.js"></script>
 	</head>
 	 
 	<body>
-		<button id="getalluser">获取所有用户数据</button><br />
+		<div id="one">
+            <div id="two"><h1>注册</h1></div>
+            <div id="three"><input type="text" id="userid" placeholder="Please input userid"><br></div>
+			<div id="four"><input type="text" id="username" placeholder="Please input username"><br></div>  
+			<div id="four"><input type="password" id="password" placeholder="Please input password"><br></div>  
+            <div id="five">
+                <input type="radio" name="身份" id="用户" checked="checked">用户&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="radio" name="身份" id="管理员" >管理员<br>
+			</div>
+			<div id="six">
+				<a href="/"><button id="确定" onclick="f()" >确定</button></a>&nbsp;&nbsp;&nbsp;&nbsp;
+				<a href="/"><button id="取消" onclick="">取消</button></a>
+			</div>
+        </div>
+
+		<!-- <button id="getalluser">获取所有用户数据</button><br />
 		 用户名：<input  id="username" type="text" > <br />
 		 密码：<input  id="password" type="text" > <br />   
 		<button id="adduser">添加一个用户数据</button>
-		<p id="result"></p>
+		<p id="result"></p> -->
 	</body>
 	 <script>
 	 /**
