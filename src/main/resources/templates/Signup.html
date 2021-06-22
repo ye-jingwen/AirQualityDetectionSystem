@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:mvc="http://www.springframework.org/schema/mvc"
+      xmlns:context="http://www.springframework.org/schema/context">
+	<head>
+		<mvc:annotation-driven enable-matrix-variables="true"/>
+		    <context:component-scan base-package="com.example.demo"/>
+		    <mvc:default-servlet-handler/>
+		<meta charset="utf-8">
+		<title>文档标题</title>
+		<!--使用jquery框架-->
+		<script type="text/javascript" src="jquery-3.3.1.js"></script>
+	</head>
+	 
+	<body>
+		<button id="getalluser">获取所有用户数据</button><br />
+		 用户名：<input  id="username" type="text" > <br />
+		 密码：<input  id="password" type="text" > <br />   
+		<button id="adduser">添加一个用户数据</button>
+		<p id="result"></p>
+	</body>
+	 <script>
+	 /**
+	 * Created by Doublestar on 2017/10/1.
+	 */
+	$(document).ready(function(){   //在HTML文档加载完成后执行
+	    //GET方法
+	    $("#getalluser").click(function(){ //HTML中id为get的HTML标签的点击动作
+	        $.ajax({
+	            url:'/users/',    //请求的URL地址
+	            type:'GET', //请求方法，GET、POST、PUT、DELETE在这里设置
+	            timeout:5000,    //超时时间
+	            dataType:'text',    //返回的数据格式：json/xml/html/script/jsonp/text
+	            success:function(data,textStatus,jqXHR){    //成功的回调函数
+	                $("#result").html(data) //设置id为result的标签的html内容为返回的data数据
+	            },
+	            error:function(xhr,textStatus){ //失败的回调函数
+	                $("#result").html(textStatus)
+	            }
+	        })
+	    })
+	//POST方法
+	    $("#adduser").click(function(){
+	        $.ajax({
+	            url:"http://localhost:8090/users/adduser",
+	            data:{
+	               "userName":$("#username").val(),
+	               "password":$("#password").val()
+	            },
+	            type:'GET', //请求方法，GET、POST、PUT、DELETE在这里设置
+	            timeout:5000,    //超时时间
+	            dataType:'text',    //返回的数据格式：json/xml/html/script/jsonp/text
+	            success:function(data,textStatus,jqXHR){
+	                $("#result").html(data)
+	            },
+	            error:function(xhr,textStatus){
+	                $("#result").html(textStatus)
+	            }
+	        })
+	    })
+	})
+	</script>
+</html>

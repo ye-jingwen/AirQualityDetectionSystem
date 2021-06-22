@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:mvc="http://www.springframework.org/schema/mvc"
+      xmlns:context="http://www.springframework.org/schema/context">
+	<head>
+	    <mvc:annotation-driven enable-matrix-variables="true"/>
+	    <context:component-scan base-package="com.example.demo"/>
+	    <mvc:default-servlet-handler/>
+	    <meta charset="utf-8" />
+	    <title></title>
+	    <script type="text/javascript" src="jquery-3.3.1.js"></script>
+	    <script type="text/javascript">
+	    function f() {
+	        $.ajax({
+	            url:"/users/a",
+	            data:{
+	               "userName":$("#username").val()
+	            },
+	            success:function (data) {
+	                console.log(data);
+	                if(data.toString() == "success")
+	                {
+	                    $("#usernamecontext").html("用户名合法")
+	                }else {
+	                    $("#usernamecontext").html("用户名不合法")
+	                }
+	 
+	            }
+	 
+	        })
+	 
+	    }
+	    </script>
+	 
+	</head>
+	<body>
+		<p>
+		   用户名：
+		    <input  id="username" type="text" onblur="f()">
+		    <span id="usernamecontext"></span>
+		</p>
+		<p>
+		   密码：
+		    <input  id="password" type="text">
+		    <span id="passwordcontext"></span>
+		</p>
+		<a href="Signup">注册</a>
+		<a href="UserSystem">登录用户系统</a>
+		<a href="ManagerSystem">登录管理员系统</a>
+	</body>
+</html>

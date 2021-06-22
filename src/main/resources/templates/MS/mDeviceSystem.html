@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:mvc="http://www.springframework.org/schema/mvc"
+      xmlns:context="http://www.springframework.org/schema/context">
+<head>
+    <mvc:annotation-driven enable-matrix-variables="true"/>
+    <context:component-scan base-package="com.example.demo"/>
+    <mvc:default-servlet-handler/>
+    <meta charset="utf-8" />
+    <title></title>
+    <script type="text/javascript" src="../jquery-3.3.1.js"></script>
+</head>
+<body>
+<h3>添加设备信息</h3>
+<p>
+  	用户名：
+    <input  id="username" type="text">
+    <span id="comtext"></span>
+</p>
+<p>
+  	设备名：
+    <input  id="shebeiname" type="text">
+    <span id="comtext"></span>
+</p>
+<p>
+  	设备ID：
+    <input  id="shebeiid" type="text">
+    <span id="comtext"></span>
+</p>
+<button id="shebei">提交</button>
+<button id="getallshebeidata">获取设备信息</button><br />
+<p id="result"></p>
+</body>
+
+<script>
+$(document).ready(function(){
+	$("#shebei").click(function(){
+        $.ajax({
+            url:"http://localhost:8090/shebeis/addshebei",
+            data:{
+               "userName":$("#username").val(),
+               "shebeiname":$("#shebeiname").val(),
+               "shebeiID":$("#shebeiid").val()
+            },
+            type:'GET', //请求方法，GET、POST、PUT、DELETE在这里设置
+            timeout:5000,    //超时时间
+            dataType:'text',    //返回的数据格式：json/xml/html/script/jsonp/text
+            success:function(data,textStatus,jqXHR){
+                $("#result").html(data)
+            },
+            error:function(xhr,textStatus){
+                $("#result").html(textStatus)
+            }
+            //success:function (data) {
+                //console.log(data);
+                //if(data.toString() == "success")
+                //{
+                //    $("#comtext").html("用户名合法")
+                //}else {
+                //    $("#comtext").html("用户名不合法")
+                //}
+ 
+            //}
+        })
+      })
+        $("#getallshebeidata").click(function(){
+        $.ajax({
+            url:"/shebeis/getallshebei",
+            type:'GET', //请求方法，GET、POST、PUT、DELETE在这里设置
+            timeout:5000,    //超时时间
+            dataType:'text',    //返回的数据格式：json/xml/html/script/jsonp/text
+            success:function(data,textStatus,jqXHR){
+                $("#result").html(data)
+            },
+            error:function(xhr,textStatus){
+                $("#result").html(textStatus)
+            }
+            //GET方法
+        })
+    })
+})
+</script>
+</html>
